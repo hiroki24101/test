@@ -59,7 +59,7 @@ async function predict(webcamElement) {
 
 function sendDiscordNotification(label, probability) {
     const message = {
-        content: `class2 が検出されました！ 確率: ${(probability * 100).toFixed(2)}%`
+        content: `不審者 が検出されました！ 確率: ${(probability * 100).toFixed(2)}%`
     };
 
     console.log('Sending notification to Discord:', message);

@@ -52,7 +52,7 @@ async function predict(webcamElement) {
     labelContainer.innerHTML = `結果: ${label} (${(highestProb * 100).toFixed(2)}%)`;
 
     // class2が推論された場合、Discordに通知を送信
-    if (label === 'class2') {
+    if (label === 'Class 2') {
         sendDiscordNotification(label, highestProb);
     }
 }

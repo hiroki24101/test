@@ -1,4 +1,4 @@
-const URL = 'https://teachablemachine.withgoogle.com/models/ty4ib0w-n/' // Teachable MachineからコピーしたモデルURLを貼り付け
+const URL = 'https://teachablemachine.withgoogle.com/models/ty4ib0w-n/'; // Teachable MachineからコピーしたモデルURLを貼り付け
 const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1319879524065869904/r1Qvsyvr2ECrha4ps9cF5I8uTJOyp1155gh_j1Ansc44l5aLDjDaj3VGOq57rqFCYkuf'; // ここにWebhook URLを貼り付け
 
 let model, labelContainer, maxPredictions;
@@ -19,15 +19,11 @@ async function init() {
     // デバッグ用ログ
     console.log('Webcam initialized');
 
-    // ループ開始
-    window.requestAnimationFrame(loop);
-
-    document.getElementById('check').addEventListener('click', () => predict(webcamElement));
+    // ラベルコンテナを取得
     labelContainer = document.getElementById('result');
-}
 
-async function loop() {
-    window.requestAnimationFrame(loop);
+    // 1秒ごとにpredict関数を呼び出す
+    setInterval(() => predict(webcamElement), 1000);
 }
 
 async function predict(webcamElement) {
@@ -82,7 +78,6 @@ function sendDiscordNotification(label, probability) {
         console.error('エラーが発生しました', error);
     });
 }
-
 
 // ウェブカメラの起動を確実にするために、ページが読み込まれた後にinit関数を呼び出す
 window.addEventListener('load', init);
